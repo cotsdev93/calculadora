@@ -27,10 +27,14 @@ class Display {
   }
 
   computar(tipo) {
-    this.tipoOperacion !== "=" && this.calcular();
-    this.tipoOperacion = tipo;
-    this.valorAnterior = this.valorActual || this.valorAnterior;
-    this.valorActual = "";
+    if (this.valorActual === "") {
+      return;
+    } else {
+      this.tipoOperacion !== "igual" && this.calcular();
+      this.tipoOperacion = tipo;
+      this.valorAnterior = this.valorActual || this.valorAnterior;
+      this.valorActual = "";
+    }
     this.imprimirValores();
   }
 
@@ -52,10 +56,11 @@ class Display {
   calcular() {
     const valorAnterior = parseFloat(this.valorAnterior);
     const valorActual = parseFloat(this.valorActual);
+
     if (isNaN(valorActual) || isNaN(valorAnterior)) return;
     this.valorActual = this.calculador[this.tipoOperacion](
       valorAnterior,
       valorActual
-    ).toString();
+    );
   }
 }

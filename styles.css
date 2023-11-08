@@ -71,7 +71,7 @@ button:active {
   height: 25%;
   margin: auto;
   border-radius: 5px;
-  box-shadow: inset 0px 0px 5px 2px #00000044;
+  box-shadow: inset 0px 0px 5px 3px #00000044;
   text-align: right;
   font-size: 35px;
   text-shadow: 1px 1px 5px 5px #00000033;
@@ -83,7 +83,7 @@ button:active {
   height: 25%;
   margin: auto;
   border-radius: 5px;
-  box-shadow: inset 0px 0px 5px 2px #00000044;
+  box-shadow: inset 0px 0px 5px 3px #00000044;
   text-align: right;
   font-size: 35px;
   text-shadow: 1px 1px 5px 5px #00000033;
