@@ -19,6 +19,13 @@ class Display {
     this.imprimirValores();
   }
 
+  borrarNegativo() {
+    const posicionNegativo = this.valorActual.indexOf("-");
+    this.valorActual =
+      this.valorActual.slice(0, posicionNegativo) +
+      this.valorActual.slice(posicionNegativo + 1);
+    this.imprimirValores();
+  }
   borrarTodo() {
     this.valorActual = "";
     this.valorAnterior = "";
@@ -39,10 +46,23 @@ class Display {
   }
 
   agregarNumero(numero) {
-    if (numero === "-" && this.valorActual.includes("-")) return;
-    if (numero === "-" && /\d/.test(this.valorActual)) return;
-    if (numero === "." && this.valorActual.includes(".")) return;
-    this.valorActual = this.valorActual.toString() + numero.toString();
+    if (numero === "-" && this.valorActual.includes("-")) {
+      // Si ya hay un signo negativo, no hacer nada
+      return;
+    }
+  
+    if (numero === "-") {
+      // Si el número a agregar es un signo negativo y no está presente, agregarlo al principio
+      this.valorActual = "-" + this.valorActual.replace("-", ""); // Elimina cualquier otro signo negativo presente
+    } else if (numero === "." && this.valorActual.includes(".")) {
+      // Si el número a agregar es un punto y ya hay un punto, no hacer nada
+      return;
+    } else {
+      // En cualquier otro caso, agregar el número normalmente
+      this.valorActual = this.valorActual.toString() + numero.toString();
+    }
+  
+    // Actualizar el display
     this.imprimirValores();
   }
 

@@ -15,5 +15,9 @@ botonesOperadores.forEach((boton) => {
 });
 
 botonNegativo.addEventListener("click", () => {
-  display.agregarNumero("-");
+  if (display.valorActual.includes("-")) {
+    display.borrarNegativo()
+  } else {
+    display.agregarNumero("-");
+  }
 });
